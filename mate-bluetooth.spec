@@ -6,12 +6,12 @@
 
 Summary:	MATE Bluetooth Subsystem
 Name:		mate-bluetooth
-Version:	1.2.1
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.2/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
 
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	intltool
@@ -55,7 +55,7 @@ Group:		Development/C
 Summary:	Development libraries and header files from %{name}
 Requires:	%{libname} = %{version}
 Requires:	%{girname} = %{version}
-Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n	%{devname}
 Development libraries and header files from %{name}
@@ -102,8 +102,6 @@ NOCONFIGURE=yes ./autogen.sh
 %{_datadir}/%{name}
 %{_iconsdir}/mate/*/*/*.*
 %{_mandir}/man1/*
-# mate help files
-%{_datadir}/mate/help
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{major}*
@@ -122,4 +120,15 @@ NOCONFIGURE=yes ./autogen.sh
 %{_libdir}/caja-sendto/plugins/libnstbluetooth.so
 %{_datadir}/MateConf/gsettings/mate-bluetooth-nst
 %{_datadir}/glib-2.0/schemas/org.mate.Bluetooth.nst.gschema.xml
+
+
+
+%changelog
+* Wed Jun 13 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.1-2
++ Revision: 805468
+- rebuild for bad package
+
+* Mon Jun 04 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.1-1
++ Revision: 802388
+- imported package mate-bluetooth
 
